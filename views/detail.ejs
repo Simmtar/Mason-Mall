@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>购物</title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/detail.css">
+	<script type="text/javascript" src="javascripts/jquery-1.10.1.min.js"></script>
+	<script type = "text/javascript" src="javascripts/jquery.cookie.js"></script>
+	<script type="text/javascript" src="javascripts/detail.js"></script>
+
+	<!-- "分享到"代码 -->
+	<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
+	<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$.ajax({
+			url:"data_a1.json",
+			type:"GET",
+			success:function(res){
+				console.log(res);
+				var html="";
+				for(var i=0;  i<res.length;i++){
+					html += '<li><a href=""><img src="'+res[i].img+'"><span>'+res[i].price+'</span></a></li>';
+				}
+				$("#m6_rig ul").html(html);		
+			}
+		})	
+	})	
+	</script>
+</head>
+<body>
+<div id="header">
+	<div class="aheader">
+		<div class="home_l">
+			<img src="img/HOME.png" />
+			<a href="#">美逊首页</a>
+			<% if(uname){ %>
+		        <a href="#">您好 <%= uname %></a>
+		        <a href="#">[个人]</a>
+		        <a href="/logout">[退出]</a>
+		    <% }else{ %>
+		        <a href="#">您好，欢迎来到美逊</a>
+		        <a href="/login">请登录</a>
+		        <a href="/register">免费注册</a>
+		    <% } %>
+		</div>
+		<div class="home_r">
+			<dl>
+				<dt><a href="#">购物车</a></dt>
+			</dl>
+			<dl>
+				<dt><a href="#">我是买家</a></dt>
+				<dd>
+					<ul>
+						<li><a href="">我的订单</a></a></li>
+						<li><a href="">待付款订单</a></li>
+						<li><a href="">待确认收货</a></li>
+						<li><a href="">待评价交易</a></li>
+					</ul>
+				</dd>
+			</dl>
+			<dl>
+				<dt><a href="#">我的收藏</a></dt>
+				<dd >
+					<ul>
+						<li><a href="">商品收藏</a></li>
+						<li><a href="">店铺收藏</a></li>
+						
+					</ul>
+				</dd>
+			</dl>
+			<dl>
+				<dt><a href="#">我是卖家</a></dt>
+				<dd>
+					<ul>
+						<li><a href="">卖家中心</a></li>
+						<li><a href="">实物交易</a></li>
+						<li><a href="">商品发布</a></li>
+						<li><a href="">店铺设置</a></li>
+					</ul>
+				</dd>
+			</dl>
+			<dl>
+				<dt><a href="#">客户服务</a></dt>
+				<dd>
+					<ul>
+						<li><a href="">帮助中心</a></li>
+						<li><a href="">售后服务</a></li>
+						<li><a href="">客服中心</a></li>
+					</ul>
+				</dd>
+			</dl>
+			<dl>
+				<dt><a href="#">站点导航</a></dt>
+				<dd>
+					<ul>
+						<li><a href="">品牌</a></li>
+					</ul>
+				</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div id="main2">
+	<div id="m2_box">
+		<a href="111.html"><img src="img/a4_logo.jpg"/></a>
+		<div id="m2_cen">
+			<a href="">优优阳光</a><a href=""></a>
+		</div>
+		<div id="sou">
+			<input type="text" placeholder="想找什么商品？" id="txt"/>
+			<input type="button" id="btn" value="搜全站"/>
+			<input type="button" id="btn" value="搜本店"/>
+			<div id="aa">
+				<a href="">复印纸</a>
+				<a href="">硒鼓</a>
+				<a href="">中性笔</a>
+				<a href="">档案盒</a>
+				<a href="">文件夹</a>
+				<a href="">打印机</a>
+				<a href="">电脑</a>
+			</div>
+		</div>
+	</div>
+	
+</div>
+<div id="mm3"><img src="img/a41.jpg"></div>
+<div id="main3">
+	<div id="m3_box">
+		<a href="111.html">店铺首页</a>
+		<a href="">全部商品</a>
+		<a href="">复印纸</a>
+		<a href="">办公用品</a>
+		<a href="">热门耗材</a>
+		<a href="">生活用品</a>
+		<a href="">打印一体机热销</a>
+		<a href="">电脑热销</a>
+		<a href="">外设附件</a>
+		<a href="">清仓专区</a>
+	</div>
+	<div id="hot"><img src="img/hot.gif"/></div>
+</div>
+<div id="main4">
+	<a href="">首页</a><span>></span>
+	<a href="">电脑办公</a><span>></span>
+	<a href="">电脑办公</a><span>></span>
+	<a href="">电脑办公</a><span>></span>
+	<a href="">亚太 战斗金刚 A4  70g多功能复印纸 500张/包 8包/箱</a><span>></span>
+
+</div>
+<div id="main5">
+	<div id="m5_l">
+		<div id="m5_img">
+			<div id="imgbox"></div>
+			<img src="<%= obj.img %>" />
+			<div id="smimg"></div>
+		</div>
+		<div id="bigimg">
+			<div id="bigimg_all"><img src="img/big_a41.jpg" /></div>
+		</div>
+	</div>
+	<div id="m5_r" >
+		<div id="m5r_1">
+			<h3>亚太 战斗金刚 A4  70g多功能复印纸 500张/包 8包/箱</h3>
+			<span>暂限济南  买一箱复印纸 送一盒蓝莓 多买多送</span>
+		</div>
+		<div id="m5r_2">
+			<p>市&nbsp;场&nbsp;价：<span><%= obj.oldp %></span></p>
+			<p>商&nbsp;城&nbsp;价：<span id="m132"><%= obj.newp %><span></p>
+		</div>
+		<div id="m5r_3">
+			<ul>
+				<li>销量：<span><%= obj.sale %></span></li>
+				<li>累计评价：<span><%= obj.numb %></span></li>
+				<li id="star">商品评价：<img src="img/star.png"><img src="img/star.png"><img src="img/star.png"><img src="img/star.png"><img src="img/star.png"></li>
+			</ul>
+		</div>
+		<div id="m5r_4">
+			<div id="buynum">
+				<span>购买数量：<input type="number" value="1" min="1" step="1" />&nbsp;&nbsp;(当前库存 459 件)</span>
+			</div>
+			<div id="btn">	
+				<a href="" id="btn1">立即购买</a>
+				<a href="" id="btn2">添加购物车</a>
+			</div>
+			<div id="buynum">
+				<span>面单额度：<b><img src="img/11111.PNG"/>满39免运费</b></span>
+			</div>
+			<div id="buynum">
+				<span class="share">我要分享：</span>
+				<div class="bshare-custom">
+					</a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+					<a title="分享到QQ空间" class="bshare-qzone"></a>
+					<a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+					<a title="分享到人人网" class="bshare-renren"></a>
+					<a title="分享到腾讯微博" class="bshare-qqmb"></a>
+					
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>
+<div id="m5_b">
+	<div id="add">
+		<img src="img/d_08.png"/>
+		<ul>
+			<li><img src="<%= obj.img %>" class="ad"/></li>
+			<li><img src="img/002.jpg" class="ad"/></li>
+			<li><img src="img/003.jpg" class="ad"/></li>
+			<li><img src="img/004.jpg" class="ad"/></li>
+			<li><img src="img/004.jpg" class="ad"/></li>
+			
+		</ul>
+		<img src="img/d_09.png"/>
+	</div>
+</div>
+<div id="m6_rig">
+	<div id="m6_1">
+		<span></span>
+		<h3>看了又看</h3>
+		<span></span>
+	</div>
+	<div id="huad">
+		<ul>
+			<!-- <li>
+				<a href=""><img src="img/m6_1.jpg"></a>
+				<span>¥&nbsp;45.00</span>
+			</li> -->
+		</ul>
+	</div>
+	<div id="m6_2">
+		<img src="img/up.PNG" id="m6_le">
+		<img src="img/down.PNG" id="m6_ri">
+	</div>
+</div>
+<div id="m7">
+	<div id="m7lef">
+		<img src="img/qqshow.png" alt=""/>
+		<img src="img/qqshow2.png" alt="" />
+	</div>
+	<div id="m7rig">
+		<div>
+			<ul id="m7tit">
+				<li class="deta" >商品详情</li>
+				<li class="ping" id = "getdata">商品评价(<span class="zong"></span>)</li>
+			</ul>
+		</div>
+		<div id="stopimg">
+			<img src="img/stop1.jpg" alt="" />
+			<img src="img/stop2.gif" alt="" />
+			<img src="img/stop3.jpg" alt="" />
+		</div>
+		<div id="cit" style="display: none;">
+			<div id="m7top">
+				<div id="rate">
+					<p>
+						<strong>100</strong>
+						<sub>%</sub>
+						好评
+					</p>
+					<span>共有7人参与评分</span>
+				</div>
+				<div id="sou">
+						<input type="text" placeholder="发表你的评价" id="txt" name="content" class="showp"/>
+						<input type="submit" id="btn" value="评价商品" class="btn"/>
+				</div>
+				
+			</div>
+			<ul id="m7tit" class="m7tit">
+				商品评价(<span class="zong"></span>)
+			</ul>
+			
+
+
+			<ul id="comment_show1">
+				<!-- <li></li> -->
+			</ul>
+			<p id="select">
+		        <span id="span_one">首页</span>
+		        <span id="span_two">上一页</span>
+		       	<span id="span_three"></span>
+		        <span id="span_four">下一页</span>
+		        <span id="span_five">尾页</span>
+			   
+			</p> 
+		</div>
+
+	</div>
+</div>
+
+
+<!--footer -->
+<div id="footer">
+	<div id="fo_one">
+		<div id="fo_img"><img src="img/mz-footer.png"></div>
+	</div>
+	<div id="fo_two">
+		<dl>
+			<dt>帮助中心</dt>
+			<dd>
+				<ul>
+					<li>购物流程</li>
+					<li>查看已买商品</li>
+					<li>交易须知</li>
+				</ul>
+			</dd>
+		</dl>
+		<dl>
+			<dt>支付方式</dt>
+			<dd>
+				<ul>
+					<li>在线支付</li>
+					<li>发票保障</li>
+				</ul>
+			</dd>
+		</dl>
+		<dl>
+			<dt>售后服务</dt>
+			<dd>
+				<ul>
+					<li>联系卖家</li>
+					<li>退款申请</li>
+					<li>退换货政策</li>
+				</ul>
+			</dd>
+		</dl>
+		<dl>
+			<dt>商家服务</dt>
+			<dd>
+				<ul>
+					<li>商家中心</li>
+					<li>商家入驻</li>
+				</ul>
+			</dd>
+		</dl>
+		<dl>
+			<dt>客服中心</dt>
+			<dd>
+				<ul>
+					<li>联系我们</li>
+					<li>关于我们</li>
+				</ul>
+			</dd>
+		</dl>
+		
+	</div>
+	<div id="fo_thr">
+		<div id="fo_box">
+			<div id="box_one">
+				<a href="">首页</a>|
+				<a href="">合作及洽谈</a>|
+				<a href="">联系我们</a>|
+				<a href="">关于我们</a>|
+				<a href="">回到顶部</a>
+			</div>
+			<div id="box_one">
+				<b>合作伙伴：</b>
+				<a href="">美逊商城</a>
+				<a href="">优优阳光旗舰店</a>
+				<a href="">美逊微博</a>
+				<a href="">济南办公用品配送</a>
+			</div>
+			<div id="box_one">
+				<img src="img/mz_FootImgInfo4.png "/>
+				<img src="img/mz_FootImgInfo5.png "/>
+			</div>
+			<div id="box_one">
+				<span>编号：鲁ICP备13025849号-1 美逊版权所有 邮箱：mayzone360@163.com</span>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

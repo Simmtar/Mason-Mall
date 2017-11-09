@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/list.css">
+	<script type="text/javascript" src="javascripts/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="javascripts/list.js"></script>
+</head>
+<body>
+<div id="side">
+	<img src="img/side.png" />
+</div>
+<div id="return">
+	<img src="img/returntop.gif">
+</div>
+<div id="rigfix">
+	<a href=""><b>1F</b>多功能一体机</a>
+	<a href=""><b>2F</b>打印机</a>
+	<a href=""><b>3F</b>笔记本电脑</a>
+	<a href=""><b>4F</b>台式电脑</a>
+	<a href="" id="return1">
+		<span>回到顶层</span>
+	</a>
+</div>
+	
+</div>
+<div id="header">
+	<div class="aheader">
+		<div class="home_l">
+			<img src="img/HOME.png" />
+			<a href="#">美逊首页</a>
+			<a href="#">您好，欢迎来到美逊</a>
+			<a href="登陆.html">请登录</a>
+			<a href="注册.html">免费注册</a>
+		</div>
+		<div class="home_r">
+			<dl>
+				<dt><a href="#">购物车</a></dt>
+			</dl>
+			<dl>
+				<dt><a href="#">我是买家</a></dt>
+				<dd>
+					<ul>
+						<li><a href="#">我的订单</a></li>
+						<li><a href="#">待付款订单</a></li>
+						<li><a href="#">待确认收货</a></li>
+						<li><a href="#">待评价交易</a></li>
+					</ul>
+				</dd>
+			</dl>
+			<dl>
+				<dt><a href="#">我的收藏</a></dt>
+				<dd >
+					<ul>
+						<li><a href="#">商品收藏</a></li>
+						<li><a href="#">店铺收藏</a></li>
+						
+					</ul>
+				</dd>
+			</dl>
+			<dl>
+				<dt><a href="#">我是卖家</a></dt>
+				<dd>
+					<ul>
+						<li><a href="#">卖家中心</a></li>
+						<li><a href="#">实物交易</a></li>
+						<li><a href="#">商品发布</a></li>
+						<li><a href="#">店铺设置</a></li>
+					</ul>
+				</dd>
+			</dl>
+			<dl>
+				<dt><a href="#">客户服务</a></dt>
+				<dd>
+					<ul>
+						<li><a href="">帮助中心</a></li>
+						<li><a href="">售后服务</a></li>
+						<li><a href="">客服中心</a></li>
+					</ul>
+				</dd>
+			</dl>
+			<dl>
+				<dt><a href="#">站点导航</a></dt>
+				<dd>
+					<ul>
+						<li><a href="">品牌</a></li>
+					</ul>
+				</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div id="lo_box" class="lo_box">
+	<div id="logo">
+		<img src="img/top_logo.gif" id="logoimg"/>
+		<div id="sou">
+			<input type="text" placeholder="请输入您要搜索的关键字" id="txt"/>
+			<input type="button" id="btn" value="搜索"/>
+			<div id="aa">
+				<a href="">复印纸</a>
+				<a href="">硒鼓</a>
+				<a href="">中性笔</a>
+				<a href="">档案盒</a>
+				<a href="">文件夹</a>
+				<a href="">打印机</a>
+				<a href="">电脑</a>
+			</div>
+		</div>
+		<div id="store">
+			<dl id="shopping1">
+				<dt id="st1">
+					<img src="img/qq2.png" />
+					<span><a href="#">我的商城</a></span>
+					<i id="icon"></i>
+				</dt>
+				<dd id="st221" >
+					<div id="topt22">
+						<a href="#"><h4>我的用户中心></h4></a>
+					</div>
+					<div id="cenc1">
+						<ul id="cenc11">
+							<li>站内消息(0)</li>
+							<li>我的订单></li>
+							<li>咨询回复(0)</li>
+							<li>我的收藏></li>
+							<li>代金券(0)</li>
+							<li>我的积分></li>
+						</ul>
+					</div>
+					<div id="bott1">
+						<div id="though">
+							<h4>最近浏览的商品</h4>
+							<a href="" id="aaa">全部浏览历史</a>
+						</div>
+					</div>
+				</dd>
+			</dl>
+			<dl id="shopping">
+				<dt id="st2">
+					<img src="img/qq1.png" />
+					<span><a href="#">购物车结算</a></span>
+					<i id="icon"></i>
+					<div id="num"></div>
+				</dt>
+				<dd id="st22">
+					<div id="topt22">
+						<a href="#"><h4>最新加入的商品</h4></a>
+					</div>
+					<div id="cenc">
+						<ul id="ads">
+						</ul>
+						<span id="none">您的购物车中暂无商品，请选择合适的商品吧!</span>
+					</div>
+					<div id="bott">
+						<div id="bnum">
+							<span>共&nbsp;</span><span id="zhong">0</span><span>&nbsp;种商品&nbsp;&nbsp;总计金额：&nbsp;</span><span id="money">0</span><span>&nbsp;元</span>
+						</div>
+						<div><a href="">结算购物车中的商品</a></div>
+					</div>
+				</dd>
+			</dl>
+
+		</div>
+	</div>
+</div>
+<div id="menu">
+	<div id="me_box">
+		<ul>
+			<li id="red"><a href=""></a></li>
+			<li><a href="">首页</a></li>
+			<li><a href="">团购</a></li>
+			<li><a href="">企业办公</a></li>
+		</ul>
+	</div>
+</div>	
+<div id="banner"></div>
+<div id="main1">
+	<div id="m1_con">
+		<img src="img/titile.png" />
+		<div id="photo">
+			<ul>
+				<li>
+					<div id="box1">
+						<div id ="box2" class="box2">
+							<div id="abs" class="abs">
+								<a href="" id="shi">
+									<span></span>
+									<img src="img/dian.jpg"/>
+								</a>
+								<a href="" id="pin">
+									<span></span>
+									<img src="img/电子称.jpg">
+									<p>品奥秤重电子秤</p>
+								</a>
+							</div>
+							<!-- <div id="clear"></div> -->
+							<div id="bot">
+								<dl>
+									<dt>三星 M2071 黑白激光一体机</dt>
+									<dd>打印 复印 扫描三合一</dd>
+								</dl>
+								<a href="" id="cost">
+									<span>原价:959</span><br/>
+									<p>
+										<i>活动价:￥</i>
+										<b>959.0</b>
+									</p>
+								</a>
+							</div>
+						</div>
+
+					</div>
+				</li>
+				<li>
+					<div id="box1">
+						<div id ="box2" class="box2">
+							<div id="abs" class="abs">
+								<a href="" id="shi">
+									<span></span>
+									<img src="img/dian.jpg"/>
+								</a>
+								<a href="" id="pin">
+									<span></span>
+									<img src="img/电子称.jpg">
+									<p>品奥秤重电子秤</p>
+								</a>
+							</div>
+							<!-- <div id="clear"></div> -->
+							<div id="bot">
+								<dl>
+									<dt>三星 M2071 黑白激光一体机</dt>
+									<dd>打印 复印 扫描三合一</dd>
+								</dl>
+								<a href="" id="cost">
+									<span>原价:959</span><br/>
+									<p>
+										<i>活动价:￥</i>
+										<b>959.0</b>
+									</p>
+								</a>
+							</div>
+						</div>
+
+					</div>
+				</li>
+				<li>
+					<div id="box1">
+						<div id ="box2" class="box2">
+							<div id="abs" class="abs">
+								<a href="" id="shi">
+									<span></span>
+									<img src="img/dian.jpg"/>
+								</a>
+								<a href="" id="pin">
+									<span></span>
+									<img src="img/电子称.jpg">
+									<p>品奥秤重电子秤</p>
+								</a>
+							</div>
+							<!-- <div id="clear"></div> -->
+							<div id="bot">
+								<dl>
+									<dt>三星 M2071 黑白激光一体机</dt>
+									<dd>打印 复印 扫描三合一</dd>
+								</dl>
+								<a href="" id="cost">
+									<span>原价:959</span><br/>
+									<p>
+										<i>活动价:￥</i>
+										<b>959.0</b>
+									</p>
+								</a>
+							</div>
+						</div>
+
+					</div>
+				</li>
+				<li>
+					<div id="box1">
+						<div id ="box2" class="box2">
+							<div id="abs" class="abs">
+								<a href="" id="shi">
+									<span></span>
+									<img src="img/dian.jpg"/>
+								</a>
+								<a href="" id="pin">
+									<span></span>
+									<img src="img/电子称.jpg">
+									<p>品奥秤重电子秤</p>
+								</a>
+							</div>
+							<!-- <div id="clear"></div> -->
+							<div id="bot">
+								<dl>
+									<dt>三星 M2071 黑白激光一体机</dt>
+									<dd>打印 复印 扫描三合一</dd>
+								</dl>
+								<a href="" id="cost">
+									<span>原价:959</span><br/>
+									<p>
+										<i>活动价:￥</i>
+										<b>959.0</b>
+									</p>
+								</a>
+							</div>
+						</div>
+
+					</div>
+				</li>
+				<li>
+					<div id="box1">
+						<div id ="box2" class="box2">
+							<div id="abs" class="abs">
+								<a href="" id="shi">
+									<span></span>
+									<img src="img/dian.jpg"/>
+								</a>
+								<a href="" id="pin">
+									<span></span>
+									<img src="img/电子称.jpg">
+									<p>品奥秤重电子秤</p>
+								</a>
+							</div>
+							<!-- <div id="clear"></div> -->
+							<div id="bot">
+								<dl>
+									<dt>三星 M2071 黑白激光一体机</dt>
+									<dd>打印 复印 扫描三合一</dd>
+								</dl>
+								<a href="" id="cost">
+									<span>原价:959</span><br/>
+									<p>
+										<i>活动价:￥</i>
+										<b>959.0</b>
+									</p>
+								</a>
+							</div>
+						</div>
+
+					</div>
+				</li>
+				<li>
+					<div id="box1">
+						<div id ="box2" class="box2">
+							<div id="abs" class="abs">
+								<a href="" id="shi">
+									<span></span>
+									<img src="img/dian.jpg"/>
+								</a>
+								<a href="" id="pin">
+									<span></span>
+									<img src="img/电子称.jpg">
+									<p>品奥秤重电子秤</p>
+								</a>
+							</div>
+							<!-- <div id="clear"></div> -->
+							<div id="bot">
+								<dl>
+									<dt>三星 M2071 黑白激光一体机</dt>
+									<dd>打印 复印 扫描三合一</dd>
+								</dl>
+								<a href="" id="cost">
+									<span>原价:959</span><br/>
+									<p>
+										<i>活动价:￥</i>
+										<b>959.0</b>
+									</p>
+								</a>
+							</div>
+						</div>
+
+					</div>
+				</li>
+				<li>
+					<div id="box1">
+						<div id ="box2" class="box2">
+							<div id="abs" class="abs">
+								<a href="" id="shi">
+									<span></span>
+									<img src="img/dian.jpg"/>
+								</a>
+								<a href="" id="pin">
+									<span></span>
+									<img src="img/电子称.jpg">
+									<p>品奥秤重电子秤</p>
+								</a>
+							</div>
+							<!-- <div id="clear"></div> -->
+							<div id="bot">
+								<dl>
+									<dt>三星 M2071 黑白激光一体机</dt>
+									<dd>打印 复印 扫描三合一</dd>
+								</dl>
+								<a href="" id="cost">
+									<span>原价:959</span><br/>
+									<p>
+										<i>活动价:￥</i>
+										<b>959.0</b>
+									</p>
+								</a>
+							</div>
+						</div>
+
+					</div>
+				</li>
+				<li>
+					<div id="box1">
+						<div id ="box2" class="box2">
+							<div id="abs" class="abs">
+								<a href="" id="shi">
+									<span></span>
+									<img src="img/dian.jpg"/>
+								</a>
+								<a href="" id="pin">
+									<span></span>
+									<img src="img/电子称.jpg">
+									<p>品奥秤重电子秤</p>
+								</a>
+							</div>
+							<!-- <div id="clear"></div> -->
+							<div id="bot">
+								<dl>
+									<dt>三星 M2071 黑白激光一体机</dt>
+									<dd>打印 复印 扫描三合一</dd>
+								</dl>
+								<a href="" id="cost">
+									<span>原价:959</span><br/>
+									<p>
+										<i>活动价:￥</i>
+										<b>959.0</b>
+									</p>
+								</a>
+							</div>
+						</div>
+
+					</div>
+				</li>
+				<li>
+					<div id="box1">
+						<div id ="box2" class="box2">
+							<div id="abs" class="abs">
+								<a href="" id="shi">
+									<span></span>
+									<img src="img/dian.jpg"/>
+								</a>
+								<a href="" id="pin">
+									<span></span>
+									<img src="img/电子称.jpg">
+									<p>品奥秤重电子秤</p>
+								</a>
+							</div>
+							<!-- <div id="clear"></div> -->
+							<div id="bot">
+								<dl>
+									<dt>三星 M2071 黑白激光一体机</dt>
+									<dd>打印 复印 扫描三合一</dd>
+								</dl>
+								<a href="" id="cost">
+									<span>原价:959</span><br/>
+									<p>
+										<i>活动价:￥</i>
+										<b>959.0</b>
+									</p>
+								</a>
+							</div>
+						</div>
+
+					</div>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+</div>
+<div id="fo_thr">
+	<div id="fo_box">
+		<div id="box_one">
+			<a href="">首页</a>|
+			<a href="">合作及洽谈</a>|
+			<a href="">联系我们</a>|
+			<a href="">关于我们</a>|
+			<a href="">回到顶部</a>
+		</div>
+		<div id="box_one">
+			<b>合作伙伴：</b>
+			<a href="">美逊商城</a>
+			<a href="">优优阳光旗舰店</a>
+			<a href="">美逊微博</a>
+			<a href="">济南办公用品配送</a>
+		</div>
+		<div id="box_one">
+			<img src="img/mz_FootImgInfo4.png "/>
+			<img src="img/mz_FootImgInfo5.png "/>
+		</div>
+		<div id="box_one">
+			<span>编号：鲁ICP备13025849号-1 美逊版权所有 邮箱：mayzone360@163.com</span>
+		</div>
+	</div>
+</div>
+</body>
+</html>

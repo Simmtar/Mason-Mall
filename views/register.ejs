@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册</title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/register.css">
+	<script type="text/javascript" src="javascripts/tool.js"></script>
+	<script type="text/javascript" src="javascripts/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="javascripts/jquery.cookie.js"></script>
+	<script type="text/javascript" src="javascripts/register.js"></script>
+</head>
+<body>
+	<div id="head">
+		<div id="header">
+			<img src="img/si-logo.png"/>
+			<div id="return">
+				我已经注册，马上<a href="index.html">登录></a>
+			</div>
+		</div>
+	</div>
+	<!-- <form action="/users/register" method="post"> -->
+		<div id="main">
+			<div id="nave">
+				<li class="active"><span>1</span>设置用户信息</li>
+				<li><span>2</span>验证手机</li>
+				<li><span>3</span>注册成功</li>
+			</div>
+
+			<div id="dabc">
+				<div>
+					<span id="title">用户名:</span><input type="text" placeholder="请输入2-10位由数字和字母组成的用户名" id="username" name="username"/>
+			        <span id="span">用户名不能为空</span>
+				</div>
+
+				<div id="dabc1">
+			        <span id="title">请输入密码:</span><input type="password" placeholder="请设置6-20位密码，可由英文、数字及标点符号组成" id="pw" name="password"/>
+			        <span id="span">6-20位字符，可由英文、数字及标点符号组成</span>
+				</div>
+
+				<div id="dabc2">
+			        <span id="title">请确认密码:</span><input type="password" placeholder="请再次输入密码" id="ag"/>
+			        <span id="span">两次输入的密码不同，请重新输入</span>
+				</div>
+
+
+				<div id="dabc3">
+			        <span id="title"> 验证码:</span><input type="text" placeholder="请输入验证码" id="yanz"/><input type="text" value="WK8B" id="yanzheng" />
+			        <span id="nocl">看不清<a href="#" id="change">换一张</a></span>
+			        <span id="span">请填写图片中的字符，不区分大小写</span>
+				</div>
+
+
+		        <button id="btn">下一步</button>
+			</div>
+			<div id="phone">
+				<div>
+					<span id="title">手机号码:</span><input type="text" placeholder="请填入真实的手机号码，确保验证码发送成功" id="username"/>
+			        <span id="span">用户名不能为空</span>
+				</div>
+
+				<div id="dabc1">
+			        <span id="title">手机验证码:</span><input type="password" id="yanz"/><input type="button" value="免费获取验证码" id="yanzheng" />
+			        <span id="span">6-20位字符，可由英文、数字及标点符号组成</span>
+				</div>
+				<input type="button" value="下一步" id="button"/>
+			</div>
+			<div id="success">
+				<div><h3>注册成功!</h3></div>
+				<input type="button" value="完成" id="button" class="succ"/>
+			</div>
+		</div>
+	<!-- </form> -->
+</body>
+</html> 

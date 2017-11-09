@@ -1,0 +1,163 @@
+*{
+	padding:0;
+	margin:0;
+}
+body{
+	font-family: "微软雅黑";                                                                 
+	background-color: #fafafa;
+}
+#head{
+	width:100%;
+	height:120px;
+} 
+#header{
+	width:1000px;
+	padding-top: 65px;
+	margin:0 auto;
+}
+#header span{
+	float: left;
+	font-size: 24px;
+	margin-left: 15px;
+	line-height: 97px;
+	letter-spacing: 8px;
+}
+#return{
+	margin-bottom: 5px;
+	float: right;
+	line-height: 97px;
+	font-size: 14px;
+	font-weight: 600;
+
+}
+#return a{
+	color:#017fcc;
+	
+	text-decoration: none;
+}
+#return a:hover{
+	color:#e00000;
+	text-decoration: underline;
+}
+#main{
+	width:990px;
+	height:500px;
+	margin:0 auto;
+	position: relative;
+	background-color: white;
+}
+#nave{
+	width:600px;
+	height:30px;
+	padding-top: 30px;
+	border-bottom: 1px solid black;
+	margin:0 auto;
+}
+#nave li{
+	width:130px;
+	float: left;
+	list-style: none;
+	padding: 0 35px;
+	background:url(../img/number-01.png) left no-repeat;
+	background-origin: content-box;
+	text-indent: 5px;
+}
+#nave li span{
+	margin-right: 5px;
+	color:white;
+}
+#nave .active{
+	color:red;
+	border-bottom: 3px solid red;
+	padding-bottom: 7px;
+	background: url(../img/number-02.png) left no-repeat;
+	background-origin: content-box;
+}
+#dabc,#phone,#success{
+	display: block;
+	position: absolute;
+	left:200px;
+	top:110px;
+}
+#dabc #title,#phone #title{
+	float: left;
+	width:100px;
+	height:46px;
+	line-height: 46px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+#dabc input,#phone input{
+	width:386px;
+	height:40px;
+	float: left;
+	padding-left: 25px;
+	margin-bottom: 10px;
+	font-size: 12px;
+}
+#dabc div,#phone div{
+	overflow: hidden;
+}
+#dabc #span,#phone #span{
+	color:gray;
+	float: left;
+	display: none;
+	margin:10px 0 0 5px;
+	padding-left: 20px;
+	font-size: 12px;
+	color:#ee0000;
+	border:1px solid #FF6600;
+	background:url(../img/false.gif) left no-repeat;
+} 
+#dabc #yanz,#phone #yanz{
+	width:180px;
+}
+#dabc #yanzheng{
+	width:80px;
+	background: #aef384;
+	color:white;
+	font-size: 24px;
+	text-align: center;
+	padding:0;
+
+}
+#dabc #nocl{
+	overflow: hidden;
+	padding-top: 5px;
+	font-size: 14px;
+	float:left;
+}
+#dabc #pw,#dabc #ag{
+	background: url(../img/pw.jpg) left center no-repeat;
+}
+button,#button{
+	height:48px;
+	width:360px;
+	margin-left: 80px;
+	background: #ff3b3a;
+	color:white;
+	font-size: 16px;
+	line-height: 42px;
+	text-indent: center;
+	border:none;
+	letter-spacing: 15px;
+}
+#phone{
+	position: relative;
+	display: none;
+}
+#phone #yanzheng{
+	width:150px;
+	font-size: 14px;
+	text-align: center;
+	padding:0;
+	margin-left: 15px;
+}
+#success{
+	display: none;
+	padding:60px 200px;
+}
+#success .succ{
+	margin-left: -100px;
+	margin-top: 80px;
+}

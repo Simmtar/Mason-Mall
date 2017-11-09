@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登陆</title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/login.css">
+	<script type="text/javascript" src="javascripts/tool.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			var otxt=document.getElementById("txt");
+			var opw=document.getElementById("pw");
+			var ouser=document.getElementById("user");
+			var opwerr=document.getElementById("pwerr");
+			var obtn=document.getElementById("btn");
+			otxt.onblur=function(){
+				if(otxt.value==""){
+					ouser.style.display="block";
+				}else{
+					ouser.style.display="none";
+				}
+			}
+			opw.onblur=function(){
+				if(opw.value==""){
+					opwerr.style.display="block";
+				}else{
+					opwerr.style.display="none";
+				}
+			}
+
+			obtn.onclick = function(){
+				$_cookie(otxt.name,otxt.value,{expires:7});
+				$_cookie(opw.name,opw.value,{expires:7});
+				
+			}
+
+		}
+			
+		
+	</script>
+</head>
+<body>
+	<div id="head">
+		<div id="header">
+			<img src="img/登陆_Logo.jpg"/>
+			<span>•欢迎登录</span>
+			<div id="return">
+				<a href="index.html">返回首页</a>
+			</div>
+		</div>
+	</div>
+	<div id="body">
+		<div id="b_box">
+			<img src="img/登陆.jpg"/ >
+			<form action="/users/login" method="post">
+				<div id="into">
+					<div id="title">用户登录</div>
+					<div id="fri">
+						<span>用户名</span>
+						<input type="text" placeholder="用户名/邮箱/手机号" id="txt" name="username"/>
+						<div id="user"><img src="img/error.png" />用户名不能为空</div>
+					</div>
+					<div id="sec">
+						<span>密码</span>
+						<input type="text" id="pw" name="password"/>
+						<div id="pwerr"><img src="img/error.png" />密码不能为空</div>
+					</div>
+					<input type="submit" value="登录" id="btn">
+					<div id="zhuce">
+						<span id="zhu_l">还不是本站会员？立即<a href="#">注册</a></span>
+						<a href="#">忘记密码？</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

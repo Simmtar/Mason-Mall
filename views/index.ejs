@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>美逊商城</title>
+  <link rel="stylesheet" type="text/css" href="stylesheets/index.css">
+  <script type="text/javascript" src="javascripts/jquery-1.10.1.min.js"></script>
+  <script type = "text/javascript" src="javascripts/jquery.cookie.js"></script>
+  <script type="text/javascript" src="javascripts/index.js"></script>
+  
+  <script type="text/javascript">
+    $(function(){
+      
+      sc_msg();
+      sc_car();
+      $.ajax({
+        url:"t1.json",
+        type:"GET",
+        success:function(res){
+          var html="";
+          var htmlsm="";
+          for(var i=0; i<res.length;i++){
+            html += '<li><div id="tit"><span id="img1"></span><h3><a href="">'+res[i].title+'</a><span id="icon1"></span></h3></div><div id="cont"><a href="">'+res[i].content[0].title+'</a><a href="">'+res[i].content[1].title+'</a><a href="">'+res[i].content[2].title+'</a><a href="">'+res[i].content[3].title+'</a></div></li>';
+          }
+          
+          $("#list_box").find("#list").find("ul").html(html);
+        }
+      })
+      $.ajax({
+        url:"t1.json",
+        type:"GET",
+        success:function(res){
+          console.log(res);
+          var html0="";
+          var html1="";
+          var html2="";
+          var html3="";
+          for(var i = 0 ;i<res[0].content.length;i++){
+            html0 += '<br/><br/><div id="big_tit" ><img src="img/'+ res[0].content[i].img+'"><div><h5>'+ res[0].content[i].title+'</h5></div></div><ul class="ull2"></ul>'; 
+            
+            for(var j=0; j<res[0].content[i].shebei.length;j++){
+
+              html0 += '<li id="xiao"><a href="">'+res[0].content[i].shebei[j] +'</a></li>';
+            }       
+          }
+          for(var i = 0 ;i<res[1].content.length;i++){
+            html1 += '<br/><br/><div id="big_tit" ><img src="img/'+ res[1].content[i].img+'"><div><h5>'+ res[1].content[i].title+'</h5></div></div><ul class="ull2"></ul>'; 
+            
+            for(var j=0; j<res[1].content[i].zhipin.length;j++){
+
+              html1 += '<li id="xiao"><a href="">'+res[1].content[i].zhipin[j] +'</a></li>';
+            }       
+          }
+          for(var i = 0 ;i<res[2].content.length;i++){
+            html2 += '<br/><br/><div id="big_tit" ><img src="img/'+ res[2].content[i].img+'"><div><h5>'+ res[2].content[i].title+'</h5></div></div><ul class="ull2"></ul>'; 
+            
+            for(var j=0; j<res[2].content[i].xiuxian.length;j++){
+
+              html2 += '<li id="xiao"><a href="">'+res[2].content[i].xiuxian[j] +'</a></li>';
+            }       
+          }
+          for(var i = 0 ;i<res[3].content.length;i++){
+            html3 += '<br/><br/><div id="big_tit" ><img src="img/'+ res[3].content[i].img+'"><div><h5>'+ res[3].content[i].title+'</h5></div></div><ul class="ull2"></ul>'; 
+            
+            for(var j=0; j<res[3].content[i].xifa.length;j++){
+
+              html3 += '<li id="xiao"><a href="">'+res[3].content[i].xifa[j] +'</a></li>';
+            }       
+          }
+          $("#ull0").html(html0);
+          $("#ull1").html(html1);
+          $("#ull2").html(html2);
+          $("#ull3").html(html3);
+        }
+      })
+
+
+      $.ajax({
+        url:"list.json",
+        type:"GET",
+        success:function(res){
+          var html="";
+          for(var i=0; i<res[0].children.length;i++){
+            html += '<li id="'+res[0].children[i].id+'"><img src="'+res[0].children[i].img+'"/></li>';
+          }
+          $("#off_rrr1").html(html);
+          var html="";
+          for(var i=0; i<res[1].children.length;i++){
+            html += '<li id="'+res[1].children[i].id+'"><img src="'+res[1].children[i].img+'"/></li>';
+          }
+          $("#off_rrr2").html(html);
+          var html="";
+          for(var i=0; i<res[2].children.length;i++){
+            html += '<li id="'+res[2].children[i].id+'"><img src="'+res[2].children[i].img+'"/></li>';
+          }
+          $("#off_rrr3").html(html);
+          var html="";
+          for(var i=0; i<res[3].children.length;i++){
+            html += '<li id="'+res[3].children[i].id+'"><img src="'+res[3].children[i].img+'"/></li>';
+          }
+          $("#off_rrr4").html(html);
+          
+        }
+      })
+      // 加入购物车
+      // 删除购物车
+      
+      sc_msg();
+
+      $("#shopping").mouseenter(function(){
+        $("#st2").css("background","white")/*.css("height","41px")*/.css("border"," 1px solid #dddddd").css("border-bottom","none");
+        $("#st22").css("display","block");
+
+
+        if($("#ads").children().size()==0){
+          $("#none").html("您的购物车中暂无商品，赶快选择心爱的商品吧！");
+          
+        }else{
+          $("#none").html("");
+        }
+  
+      })
+      $("#shopping").mouseleave(function(){
+        $("#st2").css("background","#FAFAFA").css("border-bottom","1px solid #dddddd");
+        $("#st22").css("display","none");
+      });
+      sc_car();
+
+
+      $(".off_rrr").on("click", "li", function(){
+        var id = this.id;
+        var first = $.cookie("goods") == null ? true : false;
+        var same = false;
+        if(first){
+          $.cookie("goods", '[{"id":' + id + ',"num":1}]');
+        }else{
+          var str = $.cookie("goods");
+          var arr = JSON.parse(str);
+          for(var i in arr){
+            if(arr[i].id == id){
+              arr[i].num++;
+              var cookieStr = JSON.stringify(arr);
+              $.cookie("goods", cookieStr);
+              same = true;
+            }
+          }
+          if(!same){
+            var obj = {
+              id: id,
+              num: 1
+            }
+            arr.push(obj);
+            var cookieStr = JSON.stringify(arr);
+            $.cookie("goods", cookieStr);
+          }
+        }
+        sc_msg();
+        sc_car();
+        alert("购物车添加成功！");
+      })
+
+
+       
+      $("#ads").on("click","#clear",function(){
+        var string=$.cookie("goods");
+        var brr=JSON.parse(string);
+        var sc_num = 0;
+        var count=$(this).parent().index();
+        brr.splice(count,1);
+        var newstring=JSON.stringify(brr);
+        $.cookie("goods",newstring);
+        sc_msg();
+        sc_car();
+        if($("#ads").children().size()==0){
+          $("#none").html("您的购物车中暂无商品，赶快选择心爱的商品吧！");
+          
+        }else{
+          $("#none").html("");
+        } 
+      })
+
+
+      function sc_car(){
+        var sc_str = $.cookie("goods");
+        if(sc_str){
+          var sc_arr = JSON.parse(sc_str);
+          var sc_num = null;
+          // 共几种商品
+          var summm = sc_arr.length;
+          $("#zhong").html(summm);
+          // 计算总数量
+          for(var i in sc_arr){
+            sc_num += Number(sc_arr[i].num);
+          }
+          $("#num").html(sc_num);
+
+        } 
+      }
+
+      function sc_msg(){
+        $.ajax({
+          url: "list.json",
+          type: "GET",
+          success: function(res){
+            var sc_str = $.cookie("goods");
+            if(sc_str){
+              var sc_arr = JSON.parse(sc_str);
+              var sc_num = 0;
+              var html = "";
+              var html_mon="";
+              var sunmon = 0;
+              for(var i=0;i<sc_arr.length;i++){
+                var id=sc_arr[i].id-1;
+                var idimg =Math.floor(id/8);
+                var idC=id-idimg*8;
+                if(sc_arr[i].id ==33){
+                  html += '<li><img src="img/002.jpg"/><span>商品价格：&nbsp;¥132.0</span><span>商品数量：&nbsp;'+ sc_arr[i].num+'</span><a href="#" id="clear">删除</a></li>';
+                  var price33=132.0;
+                  var sum33=price33*sc_arr[i].num;
+                  sunmon+=sum33;
+                }
+                if(sc_arr[i].id <33){
+                  html+='<li><img src="'+res[idimg].children[idC].img+'"/><span>商品价格：&nbsp;'+res[idimg].children[idC].price +'</span><span>商品数量：&nbsp;'+ sc_arr[i].num+'</span><a href="#" id="clear">删除</a></li>';
+                  var strprice= res[idimg].children[idC].price.substring(1);
+                  var strnum=sc_arr[i].num;
+                  totalmoney = strprice * strnum;
+                  sunmon+=totalmoney;
+                }
+                
+              }
+              $("#cenc ul").html(html);
+              $("#money").html(sunmon);
+            }
+          }
+        })
+
+      }
+      
+
+    })
+  </script>
+  
+</head>
+<body>
+<div id="scroll"></div>
+<div id="before">
+  <img src="img/before.gif" id="be_bg"/>
+  <img src="img/mz-close.png" id="close"/>
+</div>
+<div id="header">
+  <div class="aheader">
+    <div class="home_l">
+      <img src="img/HOME.png" />
+      <a href="#">美逊首页</a>
+  
+      <% if(uname){ %>
+        <a href="#">您好 <%= uname %></a>
+        <a href="#">[个人]</a>
+        <a href="/logout">[退出]</a>
+      <% }else{ %>
+        <a href="#">您好，欢迎来到美逊</a>
+        <a href="/login">请登录</a>
+        <a href="/register">免费注册</a>
+      <% } %>
+      
+      
+    </div>
+    <div class="home_r">
+      <dl>
+        <dt><a href="#">购物车</a></dt>
+      </dl>
+      <dl>
+        <dt><a href="#">我是买家</a></dt>
+        <dd>
+          <ul>
+            <li><a href="#">我的订单</a></li>
+            <li><a href="#">待付款订单</a></li>
+            <li><a href="#">待确认收货</a></li>
+            <li><a href="#">待评价交易</a></li>
+          </ul>
+        </dd>
+      </dl>
+      <dl>
+        <dt><a href="#">我的收藏</a></dt>
+        <dd >
+          <ul>
+            <li><a href="#">商品收藏</a></li>
+            <li><a href="#">店铺收藏</a></li>
+            
+          </ul>
+        </dd>
+      </dl>
+      <dl>
+        <dt><a href="#">我是卖家</a></dt>
+        <dd>
+          <ul>
+            <li><a href="#">卖家中心</a></li>
+            <li><a href="#">实物交易</a></li>
+            <li><a href="#">商品发布</a></li>
+            <li><a href="#">店铺设置</a></li>
+          </ul>
+        </dd>
+      </dl>
+      <dl>
+        <dt><a href="#">客户服务</a></dt>
+        <dd>
+          <ul>
+            <li><a href="">帮助中心</a></li>
+            <li><a href="">售后服务</a></li>
+            <li><a href="">客服中心</a></li>
+          </ul>
+        </dd>
+      </dl>
+      <dl>
+        <dt><a href="#">站点导航</a></dt>
+        <dd>
+          <ul>
+            <li><a href="">品牌</a></li>
+          </ul>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+<div id="lo_box" class="lo_box">
+  <div id="logo">
+    <img src="img/top_logo.gif" id="logoimg"/>
+    <div id="sou">
+      <input type="text" placeholder="请输入您要搜索的关键字" id="txt"/>
+      <input type="button" id="btn" value="搜索"/>
+      <div id="aa">
+        <a href="">复印纸</a>
+        <a href="">硒鼓</a>
+        <a href="">中性笔</a>
+        <a href="">档案盒</a>
+        <a href="">文件夹</a>
+        <a href="">打印机</a>
+        <a href="">电脑</a>
+      </div>
+    </div>
+    <div id="store">
+      <dl id="shopping1">
+        <dt id="st1">
+          <img src="img/qq2.png" />
+          <span><a href="#">我的商城</a></span>
+          <i id="icon"></i>
+        </dt>
+        <dd id="st221" >
+          <div id="topt22">
+            <a href="#"><h4>我的用户中心></h4></a>
+          </div>
+          <div id="cenc1">
+            <ul id="cenc11">
+              <li>站内消息(0)</li>
+              <li>我的订单></li>
+              <li>咨询回复(0)</li>
+              <li>我的收藏></li>
+              <li>代金券(0)</li>
+              <li>我的积分></li>
+            </ul>
+          </div>
+          <div id="bott1">
+            <div id="though">
+              <h4>最近浏览的商品</h4>
+              <a href="" id="aaa">全部浏览历史</a>
+            </div>
+          </div>
+        </dd>
+      </dl>
+      <dl id="shopping">
+        <dt id="st2">
+          <img src="img/qq1.png" />
+          <span><a href="#">购物车结算</a></span>
+          <i id="icon"></i>
+          <div id="num"></div>
+        </dt>
+        <dd id="st22">
+          <div id="topt22">
+            <a href="#"><h4>最新加入的商品</h4></a>
+          </div>
+          <div id="cenc">
+            <ul id="ads">
+            </ul>
+            <span id="none">您的购物车中暂无商品，请选择合适的商品吧!</span>
+          </div>
+          <div id="bott">
+            <div id="bnum">
+              <span>共&nbsp;</span><span id="zhong">0</span><span>&nbsp;种商品&nbsp;&nbsp;总计金额：&nbsp;</span><span id="money">0</span><span>&nbsp;元</span>
+            </div>
+            <div><a href="">结算购物车中的商品</a></div>
+          </div>
+        </dd>
+      </dl>
+
+    </div>
+  </div>
+</div>
+<div id="menu">
+  <div id="me_box">
+    <ul>
+      <li id="red"><a href="">所有商品分类</a></li>
+      <li><a href="">首页</a></li>
+      <li id="re"><a href="">团购</a></li>
+      <li id="song"><a href="">企业办公</a></li>
+    </ul>
+  </div>
+</div>
+<div id="lunbo">
+  <ul id="ul1">
+    <li><a href="#"><img class="one"  src="img/web1.gif"></a></li>
+    <li><a href="#"><img class="one" src="img/web2.jpg"></a></li>
+    <li><a href="#"><img class="one" src="img/web3.gif"></a></li>
+    <li><a href="#"><img class="one" src="img/web4.gif"></a></li>
+    <li><a href="#"><img class="one" src="img/web5.jpg"></a></li>
+    <li><a href="#"><img class="one" src="img/web1.gif"></a></li>
+  </ul> 
+  <img src="img/timer.png" id="timer"/>
+  <ol id="ol1">
+      <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ol>
+    <div id="list_box">
+    <div id="list">
+      <ul id="list_ul">
+      </ul>
+    </div>
+
+    <div id="big" >
+      <ul id="ull0" class="ull0"></ul>
+      <ul id="ull1"  class="ull0" style="display: none;"></ul>
+      <ul id="ull2"  class="ull0" style="display: none;"></ul>
+      <ul id="ull3"  class="ull0" style="display: none;"></ul>
+    </div>
+  </div>
+  
+
+  <div id="m_bg">
+    <img src="img/tu.gif" />
+  </div>
+</div>
+<div id="main1">
+  <div id="m1_1">
+    <a href=""><img src="img/group.gif" /></a>
+    <a href="/detail?id=1"><img src="img/pro-1.jpg" /><img src="img/buy.png" id="buy" class="off_rrr"/><span>已售：631</span></a>
+    <a href="/detail?id=2"><img src="img/pro-2.jpg" /><img src="img/buy.png" id="buy"  class="off_rrr"/><span>已售：3969</span></a>
+    <a href="/detail?id=3"><img src="img/pro-3.jpg" /><img src="img/buy.png" id="buy"  class="off_rrr"/><span>已售：4129</span></a>
+    <a href="/detail?id=4"><img src="img/pro-4.jpg" /><img src="img/buy.png" id="buy"  class="off_rrr"/><span>已售：1022</span></a>
+  </div>
+  <div id="m1_2"><a href="/liebiao"><img src="img/geng.jpg" /></a></div>
+  <div id="office">
+    <div id="title">
+      <div id="tit_l">
+        <a href="">办公文仪</a>
+        <a href="">OFFICE STATIONERY</a>
+      </div>
+      <div id="tit_r">
+        <a href="">复印纸</a>
+        <a href="">中性笔</a>
+        <a href="">文件管理</a>
+        <a href="">办公文具</a>
+        <a href="">财务用品</a>
+        <a href="">本册/便签</a>
+      </div>
+    </div>
+    <div id="off_con">
+      <div id="off_lll">
+        <a href="#">
+          <img src="img/web-1-1.gif" class="s1"/>
+          <div class="angle1"></div>
+          <div class="angle2"></div>
+          <div class="angle3"></div>
+          <div class="angle4"></div>
+        </a>
+        <a href="#"><img src="img/web-1-13.jpg" /></a>
+      </div>
+      <div id="off_rrr1" class="off_rrr">
+        <!-- <a href=""><img src="img/web-1-15-1-11.jpg"/></a> -->
+      </div>
+    </div>
+  </div>
+  <div id="office">
+    <div id="title">
+      <div id="tit_l">
+        <a href="">办公耗材</a>
+        <a href="">OFFICE CONSUMABLES</a>
+      </div>
+      <div id="tit_r">
+        <a href="">硒鼓</a>
+        <a href="">粉盒</a>
+        <a href="">碳粉</a>
+        <a href="">墨盒</a>
+        <a href="">墨水</a>
+        <a href="">色带</a>
+      </div>
+    </div>
+    <div id="off_con">
+      <div id="off_lll">
+        <a href="">
+          <img src="img/web-4-48-4.gif"  class="s2"/>
+          <div class="angle11"></div>
+          <div class="angle21"></div>
+          <div class="angle31"></div>
+          <div class="angle41"></div>
+        </a>
+        <a href=""><img src="img/web-4-43.jpg" /></a>
+      </div>
+      <div id="off_rrr2" class="off_rrr">
+        
+      </div>
+    </div>
+  </div>
+  <div id="office">
+    <div id="title">
+      <div id="tit_l">
+        <a href="">劳保用品</a>
+        <a href="">OFFICE PROTECTION</a>
+      </div>
+      <div id="tit_r">
+        <a href="">抽纸</a>
+        <a href="">卷纸</a>
+        <a href="">纸杯</a>
+        <a href="">垃圾袋</a>
+        <a href="">垃圾桶</a>
+        <a href="">清洁工具</a>
+      </div>
+    </div>
+    <div id="off_con">
+      <div id="off_lll">
+        <a href="">
+          <img src="img/web-4-48-4.gif" class="s3"/>
+          <div class="angle12"></div>
+          <div class="angle22"></div>
+          <div class="angle32"></div>
+          <div class="angle42"></div>
+        </a>
+        <a href=""><img src="img/web-4-43.jpg" /></a>
+      </div>
+      <div id="off_rrr3" class="off_rrr">
+        
+      </div>
+    </div>
+  </div>
+  <div id="office">
+    <div id="title">
+      <div id="tit_l">
+        <a href="">办公设备</a>
+        <a href="">OFFICE EQUIPMENT</a>
+      </div>
+      <div id="tit_r">
+        <a href="">打印机</a>
+        <a href="">一体机</a>
+        <a href="">电话机</a>
+        <a href="">插排</a>
+        <a href="">鼠标</a>
+        <a href="">U盘</a>
+      </div>
+    </div>
+    <div id="off_con">
+      <div id="off_lll">
+        <a href=""><img src="img/web-3-38-3.gif" /></a>
+        <a href=""><img src="img/web-3-33.jpg" /></a>
+      </div>
+      <div id="off_rrr4" class="off_rrr">
+    
+      </div>
+    </div>
+  </div>
+</div>
+<div id="footer">
+  <div id="fo_one">
+    <div id="fo_img"><img src="img/mz-footer.png"></div>
+  </div>
+  <div id="fo_two">
+    <dl>
+      <dt>帮助中心</dt>
+      <dd>
+        <ul>
+          <li>购物流程</li>
+          <li>查看已买商品</li>
+          <li>交易须知</li>
+        </ul>
+      </dd>
+    </dl>
+    <dl>
+      <dt>支付方式</dt>
+      <dd>
+        <ul>
+          <li>在线支付</li>
+          <li>发票保障</li>
+        </ul>
+      </dd>
+    </dl>
+    <dl>
+      <dt>售后服务</dt>
+      <dd>
+        <ul>
+          <li>联系卖家</li>
+          <li>退款申请</li>
+          <li>退换货政策</li>
+        </ul>
+      </dd>
+    </dl>
+    <dl>
+      <dt>商家服务</dt>
+      <dd>
+        <ul>
+          <li>商家中心</li>
+          <li>商家入驻</li>
+        </ul>
+      </dd>
+    </dl>
+    <dl>
+      <dt>客服中心</dt>
+      <dd>
+        <ul>
+          <li>联系我们</li>
+          <li>关于我们</li>
+        </ul>
+      </dd>
+    </dl>
+    
+  </div>
+  <div id="fo_thr">
+    <div id="fo_box">
+      <div id="box_one">
+        <a href="">首页</a>|
+        <a href="">合作及洽谈</a>|
+        <a href="">联系我们</a>|
+        <a href="">关于我们</a>|
+        <a href="">回到顶部</a>
+      </div>
+      <div id="box_one">
+        <b>合作伙伴：</b>
+        <a href="">美逊商城</a>
+        <a href="">优优阳光旗舰店</a>
+        <a href="">美逊微博</a>
+        <a href="">济南办公用品配送</a>
+      </div>
+      <div id="box_one">
+        <img src="img/mz_FootImgInfo4.png "/>
+        <img src="img/mz_FootImgInfo5.png "/>
+      </div>
+      <div id="box_one">
+        <span>编号：鲁ICP备13025849号-1 美逊版权所有 邮箱：mayzone360@163.com</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
